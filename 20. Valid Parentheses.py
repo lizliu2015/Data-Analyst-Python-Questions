@@ -1,14 +1,10 @@
 class Solution:
-    # @return a boolean
     def isValid(self, s):
-        stack = []
-        dict = {"]":"[", "}":"{", ")":"("}
-        for char in s:
-            if char in dict.values():
-                stack.append(char)
-            elif char in dict.keys():
-                if stack == [] or dict[char] != stack.pop():
-                    return False
+        stack = [0]
+        mapping = {0: None, '(':')', '[':']', '{':'}'}
+        for c in s:
+            if c in mapping: 
+                stack.append(c)
             else:
-                return False
-        return stack == []
+                if mapping[stack.pop()] != c: return False
+        return stack == [0]
