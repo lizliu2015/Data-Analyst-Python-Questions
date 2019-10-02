@@ -7,8 +7,8 @@ class Solution:
                 if d1[s[i]] != t[i]:  
                     return False
             elif d2.get(t[i]):
-                    if d2[t[i]] != s[i]:
-                        return False
+                if d2[t[i]] != s[i]:
+                    return False
             else:
                 d1[s[i]] = t[i] 
                 d2[t[i]] = s[i] 
