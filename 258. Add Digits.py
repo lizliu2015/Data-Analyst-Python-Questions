@@ -5,5 +5,5 @@ class Solution:
             for i in str(num):
                 n = n + int(i)
             num = n
-            n = 0
+            n = 0  #reset n
         return num
