@@ -5,7 +5,7 @@ class Solution:
             for j in range(i + 1, len(nums)):
                 if nums[i] + nums[j] == target:
                     return [i, j]
-        return false
+        return False
 
 #O(N) solution
 class Solution:
@@ -16,4 +16,5 @@ class Solution:
                 return [d[nums[i]], i]
             else:
                 d[target - nums[i]] = i
+        return False
                 
