@@ -11,20 +11,31 @@ class Solution:
 #binary search                
 class Solution:
     def mySqrt(self, x: int) -> int:
-            def mySqrt(self, x):
-        lo, hi = 0, x
-        
-        while lo <= hi:
-            mid = (lo + hi) // 2
-            
-            if mid * mid > x:
-                hi = mid - 1
-            elif mid * mid < x:
-                lo = mid + 1
-            else:
+        if x == 0:
+            return 0
+        if x == 1:
+            return 1
+        l = 0
+        h = x
+        while l <= h:
+            mid = (l+h)//2         
+            if mid**2 <= x < (mid+1)**2:
                 return mid
-        
-        # When there is no perfect square, hi is the the value on the left
-        # of where it would have been (rounding down). If we were rounding up, 
-        # we would return lo
-        return hi
+            elif mid**2 < x:
+                l = mid+1 
+            elif mid**2 > x:
+                h = mid-1
+
+
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        return self.bsearch(0, x, x)
+                
+    def bsearch(self, low: int, high: int, target: int) -> int:
+        mid = (high + low)//2
+        if mid**2 <= target and (mid+1)**2 > target: # this was the tricky part for me
+            return mid
+        elif mid**2 > target:
+            return self.bsearch(low, mid-1, target)
+        else:
+            return self.bsearch(mid+1, high, target)
